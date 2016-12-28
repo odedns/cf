@@ -1,10 +1,6 @@
 package cf.queue.service;
 
-<<<<<<< HEAD
 import java.util.LinkedList;
-
-=======
->>>>>>> 26f136161129c61361d06df372319169c49b029c
 import org.apache.log4j.Logger;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Message;
@@ -29,7 +25,6 @@ public class QueueService {
 	}
 	
 	@RequestMapping(value="/get", method=RequestMethod.GET)
-<<<<<<< HEAD
 	public String[] getMessage()
 	{
 		LinkedList<String> list = new LinkedList<String>();
@@ -43,16 +38,7 @@ public class QueueService {
 		}
 		String[] strings = list.stream().toArray(String[]::new);
 		return(strings);
-=======
-	public String getMessage()
-	{
-		log.debug("in getMessage");
-		Message msg = amqpTemplate.receive();
-		if(null == msg) {
-			return(null);
-		}
-		log.debug("got message : " + msg.toString());
-		return(new String(msg.getBody()));
->>>>>>> 26f136161129c61361d06df372319169c49b029c
 	}
+	
+	
 }
