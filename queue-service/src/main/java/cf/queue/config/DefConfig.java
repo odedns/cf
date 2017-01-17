@@ -9,6 +9,7 @@ import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -17,14 +18,15 @@ import org.springframework.context.annotation.Profile;
 @Profile("default")
 public class DefConfig {
 	  private final static String QUEUE_NAME = "hello";
-
+	  @Value("${queue.url}")
+	  private String queueUrl;
 	
 	@Bean
     public ConnectionFactory connectionFactory() {
-        String url = "amqp://cjkdizmi:yA1AUhMtGpmp9HHkp5e0o2OqikO3_0qk@zebra.rmq.cloudamqp.com/cjkdizmi";
-        CachingConnectionFactory factory = null;
+   //     String url = "amqp://cjkdizmi:yA1AUhMtGpmp9HHkp5e0o2OqikO3_0qk@zebra.rmq.cloudamqp.com/cjkdizmi";
+		CachingConnectionFactory factory = null;
         try {
-			factory = new CachingConnectionFactory(new URI(url));
+			factory = new CachingConnectionFactory(new URI(queueUrl));
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
