@@ -9,6 +9,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "stockService", path = "stockService")
 public interface StockRepository extends CrudRepository<Stock, Long> {
 
-	List<Stock> findBySymbol(@Param("symbol") String symbol);
+	List<Stock> findBySymbolIgnoreCase(@Param("symbol") String symbol);
 
 }
